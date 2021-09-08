@@ -17,8 +17,9 @@ struct ContentView: View {
             
             if !isClicked {
                 RoundedRectangle(cornerRadius: 25.0)
-                    .frame(width: 100, height: 100)
                     .matchedGeometryEffect(id: "rectangle", in: nameSpace)
+                    .frame(width: 100, height: 100)
+                    .padding(50)
             }
             
             
@@ -26,12 +27,14 @@ struct ContentView: View {
             
             if isClicked {
                 RoundedRectangle(cornerRadius: 25.0)
-                    .frame(width: 100, height: 100)
                     .matchedGeometryEffect(id: "rectangle", in: nameSpace)
+                    .frame(width: 300, height: 200)
+                    .padding(50)
                 }
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.red)
+        .edgesIgnoringSafeArea(.all)
         .onTapGesture {
             withAnimation(.easeInOut) {
                 isClicked.toggle()

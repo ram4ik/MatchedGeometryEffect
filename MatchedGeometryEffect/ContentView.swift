@@ -8,9 +8,35 @@
 import SwiftUI
 
 struct ContentView: View {
+    
+    @State private var isClicked: Bool = false
+    @Namespace private var nameSpace
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        VStack {
+            
+            if !isClicked {
+                RoundedRectangle(cornerRadius: 25.0)
+                    .frame(width: 100, height: 100)
+                    .matchedGeometryEffect(id: "rectangle", in: nameSpace)
+            }
+            
+            
+            Spacer()
+            
+            if isClicked {
+                RoundedRectangle(cornerRadius: 25.0)
+                    .frame(width: 100, height: 100)
+                    .matchedGeometryEffect(id: "rectangle", in: nameSpace)
+                }
+        }
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color.red)
+        .onTapGesture {
+            withAnimation(.easeInOut) {
+                isClicked.toggle()
+            }
+        }
     }
 }
 
